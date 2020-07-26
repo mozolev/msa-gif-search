@@ -10,6 +10,7 @@ trigger:
 variables:
   rootDir: 'gif-search-app'
   buildDir: '$(rootDir)/build'
+  REACT_APP_API_KEY: $(apiKey)
 
 pool:
   vmImage: 'ubuntu-latest'
