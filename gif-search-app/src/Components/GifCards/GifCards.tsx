@@ -46,7 +46,7 @@ function GifCards(props: GifCardsProps) {
 
   GifItems.forEach((item: GifItem, i: number) => {
     Cards.push(
-      <Grid key={'card_' + i} item sm={6} md={4} lg={3}>
+      <Grid key={'card_' + i} item xs={12} sm={6} md={4} lg={3}>
         <GifCard url={item.url} title={item.title}/>
       </Grid>
     )
@@ -54,7 +54,7 @@ function GifCards(props: GifCardsProps) {
 
   return (
     <div>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} justify='space-evenly'>
         {Cards}
       </Grid>
     </div>

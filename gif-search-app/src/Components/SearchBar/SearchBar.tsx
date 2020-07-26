@@ -13,33 +13,37 @@ function SearchBar(props: SearchBarProps) {
     setSearchValue(value);
   };
 
-  const submitHandler = () => {
+  const submitHandler = (event) => {
+    event.preventDefault();
     props.setUserInput(searchValue);
   };
 
   return (
-    <div>
+    <form noValidate autoComplete='off' onSubmit={submitHandler}>
       <Grid container justify='center' spacing={3} alignItems='center' className='SearchBarContainer'>
-        <Grid item>
+        <Grid item xs={12} sm={6} md={6} lg={3}>
           <TextField
             variant='outlined'
             onChange={(evt) => inputChangeHandler(evt.target.value)}
             value={searchValue}
-            size='medium'
+            autoFocus
+            size='small'
+            fullWidth
+            placeholder='fast car'
           />
         </Grid>
-        <Grid item>
+        <Grid item sm={2} md={2} lg={1}>
           <Button
             variant='outlined'
             color='primary'
-            onClick={submitHandler}
-            size='medium'
+            size='large'
+            type='submit'
           >
             Search
           </Button>
         </Grid>
       </Grid>
-    </div>
+    </form>
   )
 };
 
