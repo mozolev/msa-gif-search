@@ -29,7 +29,7 @@ function SearchBar(props: SearchBarProps) {
             autoFocus
             size='small'
             fullWidth
-            placeholder='fast car'
+            placeholder='cat'
           />
         </Grid>
         <Grid item sm={2} md={2} lg={1}>

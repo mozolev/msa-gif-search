@@ -11,7 +11,7 @@ http://msa-gif-search.azurewebsites.net
 5) Publish build
 
 ### Deploy:
-
+After every pipeline to `master` branch deploy takes place.
 
 
 
