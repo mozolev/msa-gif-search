@@ -3,28 +3,17 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-resources:
-  repositories:
-  - repository: common
-    type: github
-    name: Contoso/CommonTools
-    endpoint: MyContosoServiceConnection
-    trigger:
-      branches:
-        include:
-        - master
-        - develop
-
 trigger:
   branches:
     include:
     - master
+    - develop
   paths:
       exclude:
       - README.md
 
 variables:
-  rootDir: 'gif-search-app'
+  rootDir: 'app'
   buildDir: '$(rootDir)/build'
   REACT_APP_API_KEY: $(apiKey)
 
