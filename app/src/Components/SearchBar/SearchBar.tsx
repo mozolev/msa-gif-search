@@ -16,6 +16,7 @@ function SearchBar(props: SearchBarProps) {
   const submitHandler = (event) => {
     event.preventDefault();
     props.setUserInput(searchValue);
+    setSearchValue(searchValue.trim());
   };
 
   return (
