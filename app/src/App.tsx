@@ -7,6 +7,7 @@ import getGifsByPage, { GifItem } from './api/gifsearch';
 import Tags from './Components/Tags/Tags';
 import getShuffledTags from './helpers/shuffleTags';
 import Copyright from './Components/Copyright/Copyright';
+import { Container } from '@material-ui/core';
 
 
 function App() {
@@ -31,23 +32,26 @@ function App() {
 
   return (
     <div className="App">
-      <SearchBar
-        setUserInput={(value: string) => setUserInput(value)}
-        userInput={userInput}
-      />
-      {!userInput && <Tags
-        shuffledTags={shuffledTags}
-        onClick={(tag:string) => setUserInput(tag)}
-      />}
-      {userInput && <GifCards
-        items={items}
-      />}
-      {items.length > 0 && totalPages > 1 && <PaginationComponent
-        page={currentPage}
-        pages={totalPages}
-        onChange={(page: number) => setCurrentPage(page)}
-      />}
-      <Copyright/>
+      <Container>
+        <SearchBar
+          setUserInput={(value: string) => setUserInput(value)}
+          onReset={() => setUserInput('')}
+          userInput={userInput}
+        />
+        {!userInput && <Tags
+          shuffledTags={shuffledTags}
+          onClick={(tag:string) => setUserInput(tag)}
+        />}
+        {userInput && <GifCards
+          items={items}
+        />}
+        {items.length > 0 && totalPages > 1 && <PaginationComponent
+          page={currentPage}
+          pages={totalPages}
+          onChange={(page: number) => setCurrentPage(page)}
+        />}
+        <Copyright/>
+      </Container>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import './SearchBar.css';
 interface SearchBarProps {
   setUserInput: (value: string) => void;
   userInput: string;
+  onReset: () => void;
 }
 
 function SearchBar(props: SearchBarProps) {
@@ -38,7 +39,7 @@ function SearchBar(props: SearchBarProps) {
             placeholder='cat'
           />
         </Grid>
-        <Grid item sm={2} md={2} lg={1}>
+        <Grid item>
           <Button
             variant='outlined'
             color='primary'
@@ -46,6 +47,17 @@ function SearchBar(props: SearchBarProps) {
             type='submit'
           >
             Search
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            variant='outlined'
+            color='secondary'
+            size='large'
+            type='button'
+            onClick={() => props.onReset()}
+          >
+            Reset
           </Button>
         </Grid>
       </Grid>
