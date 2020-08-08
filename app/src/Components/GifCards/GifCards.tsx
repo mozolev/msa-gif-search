@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import { Grid, CircularProgress } from '@material-ui/core';
 import GifCard from '../GifCard/GifCard';
 import { GifItem } from '../../api/gifsearch';
+import './GifCards.css';
 
 
 interface GifCardsProps {
@@ -20,11 +21,12 @@ function GifCards(props: GifCardsProps) {
   });
 
   return (
-    <div>
+    <React.Fragment>
       <Grid container spacing={3} justify='space-evenly'>
-        {Cards}
+        {props.items.length === 0 && <div className='loader'><CircularProgress /></div>}
+        {props.items.length > 0 && Cards}
       </Grid>
-    </div>
+    </React.Fragment>
   )
 }
 

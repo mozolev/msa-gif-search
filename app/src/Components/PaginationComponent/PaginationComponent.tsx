@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pagination } from '@material-ui/lab';
 import { Grid } from '@material-ui/core';
+import './PaginationComponent.css';
 
 
 interface PaginationComponentProps {
@@ -12,7 +13,7 @@ interface PaginationComponentProps {
 function PaginationComponent(props: PaginationComponentProps) {
   return (
     <div>
-      <Grid container justify='center'>
+      <Grid className='PaginationComponent' container justify='center'>
         <Pagination
           page={props.page}
           count={props.pages}

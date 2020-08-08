@@ -1,3 +1,11 @@
+.GifCardContainer {
+  position: relative;
+}
+
 .GifCardImage {
   height: 200px;
+}
+
+.MuiCardHeader-action {
+  margin: 0;
 }
