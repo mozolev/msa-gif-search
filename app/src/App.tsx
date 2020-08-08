@@ -18,6 +18,10 @@ function App() {
   const shuffledTags = getShuffledTags();
 
   useEffect(() => {
+    if (userInput === '') {
+      setItems([]);
+    }
+
     if (userInput.length < 3) {
       return;
     }
@@ -35,7 +39,10 @@ function App() {
       <Container>
         <SearchBar
           setUserInput={(value: string) => setUserInput(value)}
-          onReset={() => setUserInput('')}
+          onReset={() => {
+            setUserInput('');
+            setItems([]);
+          }}
           userInput={userInput}
         />
         {!userInput && <Tags
