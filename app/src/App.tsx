@@ -6,6 +6,7 @@ import PaginationComponent from './Components/PaginationComponent/PaginationComp
 import getGifsByPage, { GifItem } from './api/gifsearch';
 import Tags from './Components/Tags/Tags';
 import getShuffledTags from './helpers/shuffleTags';
+import Copyright from './Components/Copyright/Copyright';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         pages={totalPages}
         onChange={(page: number) => setCurrentPage(page)}
       />}
+      <Copyright/>
     </div>
   );
 }
