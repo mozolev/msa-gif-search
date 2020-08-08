@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, TextField, Button } from '@material-ui/core';
 import './SearchBar.css';
 
 interface SearchBarProps {
   setUserInput: (value: string) => void;
+  userInput: string;
 }
 
 function SearchBar(props: SearchBarProps) {
   const [searchValue, setSearchValue] = useState<string>('');
+
+  useEffect(() => {
+    setSearchValue(props.userInput);
+  }, [props.userInput]);
 
   const inputChangeHandler = (value: string) => {
     setSearchValue(value);
@@ -16,6 +21,7 @@ function SearchBar(props: SearchBarProps) {
   const submitHandler = (event) => {
     event.preventDefault();
     props.setUserInput(searchValue);
+    setSearchValue(searchValue.trim());
   };
 
   return (

@@ -1,5 +1,6 @@
-import React from 'react';
-import { CardMedia, Card, CardContent, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import { CardMedia, Card, CardHeader, IconButton, Tooltip } from '@material-ui/core';
+import LinkIcon from '@material-ui/icons/Link';
 import './GifCard.css';
 
 interface GifCardProps {
@@ -8,20 +9,53 @@ interface GifCardProps {
 };
 
 function GifCard(props: GifCardProps) {
+  const TIP_TIME = 2000; // 2s
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+
+  const copyToClipboard = () => {
+    const el = document.createElement('textarea');
+    el.value = props.url;
+    el.setAttribute('readonly', '');
+    el.style.position = 'absolute';
+    el.style.left = '-9999px';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, TIP_TIME);
+  };
+
   return (
-    <div>
+    <React.Fragment>
       <Card className='GifCardContainer'>
         <CardMedia
           className='GifCardImage'
           image={props.url}
+          src='picture'
         />
-        <CardContent>
-          <Typography variant='body2' color='textPrimary'>
-            {props.title}
-          </Typography>
-        </CardContent>
+        <CardHeader
+          title={props.title}
+          titleTypographyProps={{
+            variant: 'body2',
+          }}
+          action={
+            <Tooltip open={isCopied} title='Copied!' placement='bottom'>
+              <IconButton
+                color="primary"
+                size="medium"
+                onClick={copyToClipboard}
+              >
+                <LinkIcon />
+              </IconButton>
+            </Tooltip>
+          }
+        />
       </Card>
-    </div>
+    </React.Fragment>
   )
 }
 
