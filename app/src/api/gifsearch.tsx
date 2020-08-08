@@ -4,7 +4,7 @@ const ITEMS_PER_PAGE = 8;
 export interface GifItem {
   url: string;
   title: string;
-  originalUrl: string;
+  sourcelUrl: string;
 };
 
 interface Pagination {
@@ -19,7 +19,7 @@ interface Gifs {
 function parseGif(item: any):GifItem {
   return {
     url: item['images']['fixed_height']['url'],
-    originalUrl: item['url'],
+    sourcelUrl: `https://i.giphy.com/media/${item['id']}/source.gif`,
     title: item['title'],
   };
 };

@@ -15,7 +15,7 @@ function GifCards(props: GifCardsProps) {
   props.items.forEach((item: GifItem, i: number) => {
     Cards.push(
       <Grid key={'card_' + i} item xs={12} sm={6} md={4} lg={3}>
-        <GifCard url={item.url} title={item.title}/>
+        <GifCard item={item} />
       </Grid>
     )
   });
